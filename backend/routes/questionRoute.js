@@ -1,13 +1,19 @@
 import express from "express";
 import {
 	createQuestion,
-	getQuestions,
+	getAllQuestions,
+	getQuestionById,
+	updateQuestion,
+	deleteQuestion,
 } from "../controllers/questionController.js";
 
 const router = express.Router();
 
-router.post("/", createQuestion);
-router.get("/", getQuestions);
+router.post("/", createQuestion); // Create a question
+router.get("/", getAllQuestions); // Get all questions
+router.get("/:id", getQuestionById); // Get a specific question by ID
+router.put("/:id", updateQuestion); // Update a specific question
+router.delete("/:id", deleteQuestion); // Delete a specific question
 
 export default router;
 
