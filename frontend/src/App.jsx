@@ -6,7 +6,7 @@ import AddQuestionForm from "./components/AddQuestionForm";
 
 import AddExam from "./pages/Add/AddExam";
 import SourceList from "./pages/ShowList/SourceList";
-//import "./App.css";
+import "./App.css";
 
 const Home = () => <h1>Welcome to MCQ DB</h1>;
 const Questions = () => (
