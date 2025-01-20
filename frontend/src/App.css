@@ -1,28 +1,49 @@
-body {
-	background-color: #f8f9fa;
+.question-list-container {
+	font-family: Arial, sans-serif;
+	margin: 20px;
 }
 
-.card {
-	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.question-container {
+	border: 2px solid #ddd;
+	padding: 20px;
+	margin-bottom: 15px;
+	border-radius: 8px;
+	background-color: #f9f9f9;
 }
 
-.card-title {
-	font-size: 1.1rem; /* Smaller font for better responsiveness */
-	font-weight: bold;
-	color: #343a40;
+.question-text h3 {
+	font-size: 18px;
+	color: #333;
 }
 
-.card-text {
-	font-size: 0.95rem; /* Adjust font size for better readability */
-	color: #495057;
+.options {
+	margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-	.card-title {
-		font-size: 1rem;
-	}
-	.card-text {
-		font-size: 0.9rem;
-	}
+.option {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.option input {
+	margin-right: 10px;
+}
+
+.submit-button {
+	margin-top: 15px;
+	padding: 10px 20px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.submit-button:hover {
+	background-color: #45a049;
+}
+
+.question-container:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

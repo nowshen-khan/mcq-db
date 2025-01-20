@@ -7,7 +7,7 @@ const sourceSchema = new mongoose.Schema({
 	enAbbreviation: { type: String, required: true }, // Abbreviation of the institution
 	type: {
 		type: String,
-		enum: ["school", "college", "board", "university"],
+		enum: ["school", "college", "board", "university", "job"],
 		required: true,
 	}, // বোর্ড, স্কুল, কলেজ নির্ধারণ
 	board: { type: String }, //school or college Board name

@@ -1,5 +1,38 @@
 import Question from "../models/Question.js";
 
+// Add Question Controller
+export const addQuestion = async (req, res) => {
+	try {
+		const { question, options, answer, meta, difficulty, exams, tags, note } =
+			req.body;
+
+		// Create new question
+		const newQuestion = new Question({
+			question,
+			options,
+			answer,
+			meta,
+			difficulty,
+			exams,
+			tags,
+			note,
+		});
+
+		await newQuestion.save();
+
+		res.status(201).json({
+			message: "Question added successfully",
+			data: newQuestion,
+		});
+	} catch (error) {
+		console.error("Error creating question:", error);
+		res.status(500).json({
+			message: "Failed to add question",
+			error: error.message,
+		});
+	}
+};
+
 // Create a new question
 export const createQuestion = async (req, res) => {
 	try {
@@ -18,9 +51,46 @@ export const createQuestion = async (req, res) => {
 // Get all questions
 export const getAllQuestions = async (req, res) => {
 	try {
-		const questions = await Question.find().populate("exams");
-		//console.log(questions);
-		res.status(200).json(questions);
+		const {
+			class: classes,
+			subject,
+			bookPart,
+			chapter,
+			difficulty,
+			sourceType,
+			examYear,
+			examType,
+		} = req.query;
+
+		const filters = {};
+		if (classes) filters["meta.class"] = { $in: classes.split(",") };
+		if (subject) filters["meta.subject"] = subject;
+		if (bookPart) filters["meta.bookPart"] = parseInt(bookPart);
+		if (chapter) filters["meta.chapter"] = chapter;
+		if (difficulty) filters.difficulty = difficulty;
+		if (sourceType) filters["exams.source.type"] = sourceType;
+		if (examYear) filters["exams.exam_year"] = parseInt(examYear);
+		if (examType) filters["exams.exam_type"] = examType;
+		const sortOrder = filters.sortOrder === "desc" ? -1 : 1;
+		// Pagination Parameters
+		const page = parseInt(req.query.page) || 1;
+		const limit = parseInt(req.query.limit) || 10;
+		const skip = (page - 1) * limit;
+
+		const questions = await Question.find(filters)
+			.populate("exams")
+			.skip(skip)
+			.limit(limit);
+
+		// Total Count
+		const total = await Question.countDocuments(filters);
+
+		res.status(200).json({
+			data: questions,
+			total,
+			page,
+			pages: Math.ceil(total / limit),
+		});
 	} catch (error) {
 		res
 			.status(500)

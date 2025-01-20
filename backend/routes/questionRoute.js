@@ -5,11 +5,13 @@ import {
 	getQuestionById,
 	updateQuestion,
 	deleteQuestion,
+	addQuestion,
 } from "../controllers/questionController.js";
 
 const router = express.Router();
 
 router.post("/", createQuestion); // Create a question
+router.post("/", addQuestion); // Create a question
 router.get("/", getAllQuestions); // Get all questions
 router.get("/:id", getQuestionById); // Get a specific question by ID
 router.put("/:id", updateQuestion); // Update a specific question

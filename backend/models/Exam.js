@@ -19,14 +19,13 @@ const examSchema = new mongoose.Schema({
 			"college_exam",
 			"board_exam",
 			"admission_exam",
-			"government_exam", // সঠিক স্পেলিং
+			"government_exam",
 			"bcs_exam",
 		],
 		required: true,
 	},
 });
 
-// ইনডেক্স যুক্ত করা
 examSchema.index({ source: 1, exam_year: 1, exam_type: 1 });
 
 const Exam = mongoose.model("Exam", examSchema);

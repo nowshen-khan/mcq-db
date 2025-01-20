@@ -6,6 +6,7 @@ const questionSchema = new mongoose.Schema(
 			text: { type: String, required: true, maxlength: 500 }, // প্রশ্নের টেক্সট অংশ
 			image: {
 				type: String,
+				default: "",
 				validate: {
 					validator: function (v) {
 						return !v || /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v);
@@ -14,13 +15,14 @@ const questionSchema = new mongoose.Schema(
 				},
 			},
 		},
-		hash: { type: String, required: true },
+		hash: { type: String, unique: true, required: true },
 		options: {
 			type: [
 				{
 					text: { type: String, maxlength: 200 }, // অপশনের টেক্সট অংশ
 					image: {
 						type: String,
+						default: "",
 						validate: {
 							validator: function (v) {
 								return !v || /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v);
@@ -42,6 +44,7 @@ const questionSchema = new mongoose.Schema(
 			text: { type: String }, // উত্তরের টেক্সট অংশ
 			image: {
 				type: String,
+				default: "",
 				validate: {
 					validator: function (v) {
 						return !v || /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v);
@@ -64,6 +67,7 @@ const questionSchema = new mongoose.Schema(
 			text: String, // নোটের টেক্সট অংশ
 			image: {
 				type: String,
+				default: "",
 				validate: {
 					validator: function (v) {
 						return !v || /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v);
@@ -74,12 +78,16 @@ const questionSchema = new mongoose.Schema(
 		},
 		exams: [{ type: mongoose.Schema.Types.ObjectId, ref: "Exam" }],
 		meta: {
-			class: { type: String, required: true },
+			class: { type: [String], required: true },
 			subject: { type: String, required: true },
-			part: Number,
+			bookPart: { type: Number, default: null },
 			chapter: { type: String },
 		},
-		difficulty: { type: String, enum: ["Easy", "Medium", "Hard"] },
+		difficulty: {
+			type: String,
+			enum: ["Easy", "Medium", "Hard"],
+			default: "medium",
+		},
 		tags: { type: [String], default: [] },
 	},
 	{ timestamps: true }
