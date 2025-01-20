@@ -1,49 +1,125 @@
-.question-list-container {
-	font-family: Arial, sans-serif;
-	margin: 20px;
-}
-
-.question-container {
-	border: 2px solid #ddd;
-	padding: 20px;
-	margin-bottom: 15px;
-	border-radius: 8px;
-	background-color: #f9f9f9;
-}
-
-.question-text h3 {
-	font-size: 18px;
+/* Global Styles */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Arial", sans-serif;
+	line-height: 1.6;
+	background-color: #f8f9fa;
 	color: #333;
 }
 
-.options {
-	margin-top: 10px;
+/* Container Styles */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
 }
 
-.option {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
+/* Page Header Styles */
+h1 {
+	font-size: 2rem;
+	color: #0056b3;
+	text-align: center;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
 }
 
-.option input {
-	margin-right: 10px;
+/* Card Style for Content Blocks */
+.card {
+	background: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 20px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.submit-button {
-	margin-top: 15px;
-	padding: 10px 20px;
-	background-color: #4caf50;
-	color: white;
+/* Navigation Links */
+.navbar a {
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: 500;
+	margin: 0 10px;
+	transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+	color: #00bcd4;
+}
+
+/* Buttons */
+button {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 15px;
 	border: none;
-	border-radius: 5px;
+	border-radius: 4px;
+	font-size: 1rem;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
-	background-color: #45a049;
+button:hover {
+	background-color: #0056b3;
 }
 
-.question-container:hover {
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+button:active {
+	background-color: #003f7f;
+}
+
+/* Table Styles (for List Views) */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table th,
+table td {
+	border: 1px solid #ddd;
+	padding: 12px 15px;
+	text-align: left;
+}
+
+table th {
+	background-color: #007bff;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+table tr:hover {
+	background-color: #ddd;
+}
+
+/* Footer Styles */
+footer {
+	background-color: #1a1a1a;
+	color: #fff;
+	text-align: center;
+	padding: 10px 0;
+	margin-top: 40px;
+}
+
+footer p {
+	margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	.container {
+		padding: 10px;
+	}
+
+	table {
+		font-size: 0.9rem;
+	}
 }

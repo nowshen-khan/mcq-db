@@ -27,8 +27,8 @@ mongoose
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
-app.use("/api/source", sourceRoutes);
-app.use("/api/exam", examRoutes);
+app.use("/api/sources", sourceRoutes);
+app.use("/api/exams", examRoutes);
 app.use("/api/questions", questionRoutes);
 
 const PORT = process.env.PORT || 5000;

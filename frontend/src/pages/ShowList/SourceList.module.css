@@ -1,0 +1,16 @@
+.responsiveList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 16px; /* কলাম এবং রো এর মাঝে ফাঁকা */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.responsiveList li {
+	border: 1px solid #ccc; /* শুধু দেখার জন্য */
+	padding: 8px;
+	border-radius: 4px;
+	background-color: #f9f9f9;
+	text-align: center;
+}

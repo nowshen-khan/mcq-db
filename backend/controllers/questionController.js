@@ -1,6 +1,25 @@
 import Question from "../models/Question.js";
 
 // Add Question Controller
+import express from "express";
+const router = express.Router();
+router.post("/check-question", async (req, res) => {
+	const { question } = req.body;
+
+	try {
+		const existingQuestion = await Question.findOne({ question });
+
+		if (existingQuestion) {
+			res.status(200).json({ exists: true, id: existingQuestion._id });
+		} else {
+			res.status(200).json({ exists: false });
+		}
+	} catch (error) {
+		console.error("Error checking question:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+});
+
 export const addQuestion = async (req, res) => {
 	try {
 		const { question, options, answer, meta, difficulty, exams, tags, note } =

@@ -1,0 +1,82 @@
+/* Container for centering the form */
+.addSourceContainer {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f7fafc;
+}
+
+/* Styling for form container */
+.formContainer {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	width: 100%;
+	max-width: 500px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the form */
+.formTitle {
+	font-size: 24px;
+	font-weight: bold;
+	color: #4a5568;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* Form fields */
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.formGroup {
+	margin-bottom: 16px;
+}
+
+.formLabel {
+	font-size: 14px;
+	color: #4a5568;
+	margin-bottom: 6px;
+}
+
+.formInput {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #d1d5db;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #4a5568;
+	background-color: #f9fafb;
+	transition: border-color 0.3s ease;
+}
+
+.formInput:focus {
+	outline: none;
+	border-color: #3182ce;
+}
+
+.submitBtn {
+	width: 100%;
+	padding: 12px;
+	background-color: #2b6cb0;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+	background-color: #3182ce;
+}
+
+.message {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 14px;
+	color: #4a5568;
+}

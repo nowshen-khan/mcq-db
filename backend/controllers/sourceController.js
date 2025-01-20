@@ -2,11 +2,11 @@ import Source from "../models/Source.js";
 
 export const createSource = async (req, res) => {
 	try {
-		const { name, type, board } = req.body;
-		const newSource = await Source.create({ type, name, board });
-		res.status(201).json(newSource);
+		const source = new Source(req.body);
+		await source.save();
+		res.status(201).json({ message: "Source added successfully!" });
 	} catch (error) {
-		res.status(500).json({ error: error.message });
+		res.status(400).json({ message: error.message });
 	}
 };
 
