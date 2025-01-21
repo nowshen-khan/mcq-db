@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
@@ -27,19 +26,21 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className="custom-navbar">
-				<div className="container">
-					<Link className="brand" to="/">
+			<nav className={styles.customNavbar}>
+				<div className={styles.container}>
+					<Link className={styles.brand} to="/">
 						MCQ DB
 					</Link>
 					<button
-						className="toggle-button"
+						className={styles.toggleButton}
 						aria-label="Toggle navigation"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
 					>
 						☰
 					</button>
-					<div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+					<div
+						className={`${styles.navLinks} ${isMenuOpen ? styles.active : ""}`}
+					>
 						<ul>
 							<li>
 								<Link to="/">Home</Link>
@@ -66,7 +67,11 @@ const Navbar = () => {
 
 			{/* Scroll-to-top button */}
 			{showScrollButton && (
-				<button className="scroll-to-top" onClick={scrollToTop}>
+				<button
+					className={styles.scrollToTopButton}
+					id="scroll-to-top"
+					onClick={scrollToTop}
+				>
 					↑
 				</button>
 			)}

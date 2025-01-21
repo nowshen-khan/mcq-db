@@ -1,5 +1,5 @@
 /* Navbar Styling */
-.custom-navbar {
+.customNavbar {
 	background-color: #1a1a1a;
 	color: #fff;
 	padding: 0.8rem 1.5rem;
@@ -7,20 +7,20 @@
 	position: relative;
 }
 
-.custom-navbar .container {
+.customNavbar .container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.custom-navbar .brand {
+.brand {
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #ffffff;
 	text-decoration: none;
 }
 
-.custom-navbar .toggle-button {
+.toggleButton {
 	display: none;
 	font-size: 1.5rem;
 	color: #ffffff;
@@ -29,13 +29,13 @@
 	cursor: pointer;
 }
 
-.custom-navbar .navLinks {
+.navLinks {
 	display: flex;
 	gap: 1.5rem;
 	list-style: none;
 }
 
-.custom-navbar .navLinks ul {
+.navLinks ul {
 	display: flex;
 	gap: 1.5rem;
 	margin: 0;
@@ -43,24 +43,28 @@
 	list-style: none;
 }
 
-.custom-navbar .navLinks ul li a {
+.navLinks ul li a {
 	color: #ffffff;
 	text-decoration: none;
 	font-size: 1rem;
 	transition: color 0.3s ease;
 }
 
-.custom-navbar .navLinks ul li a:hover {
+.navLinks ul li a:hover {
 	color: #00bcd4;
+}
+
+.active {
+	display: flex !important;
 }
 
 /* Mobile Menu */
 @media (max-width: 768px) {
-	.custom-navbar .toggle-button {
+	.toggleButton {
 		display: block;
 	}
 
-	.custom-navbar .navLinks {
+	.navLinks {
 		display: none;
 		flex-direction: column;
 		background-color: #1a1a1a;
@@ -72,11 +76,11 @@
 		border-top: 1px solid #333;
 	}
 
-	.custom-navbar .navLinks.active {
+	.navLinks.active {
 		display: flex;
 	}
 
-	.custom-navbar .navLinks ul {
+	.navLinks ul {
 		flex-direction: column;
 		gap: 1rem;
 		align-items: center;
@@ -84,7 +88,7 @@
 }
 
 /* Scroll-to-top button */
-.scroll-to-top {
+.scrollToTopButton {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
@@ -103,6 +107,6 @@
 	transition: background-color 0.3s ease;
 }
 
-.scroll-to-top:hover {
+.scrollToTopButton:hover {
 	background-color: #00bcd4;
 }

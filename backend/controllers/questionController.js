@@ -1,5 +1,82 @@
 import Question from "../models/Question.js";
 
+const filterQuestions = async (filters) => {
+	const {
+		class: classFilter,
+		subject,
+		bookPart,
+		chapter,
+		difficulty,
+		exam_year,
+		exam_type,
+		board,
+	} = filters;
+
+	try {
+		const questions = await Question.aggregate([
+			// 1. Join with Exam collection
+			{
+				$lookup: {
+					from: "exams", // Exam collection name
+					localField: "exams",
+					foreignField: "_id",
+					as: "examDetails",
+				},
+			},
+			// 2. Join with Source collection
+			{
+				$lookup: {
+					from: "sources", // Source collection name
+					localField: "examDetails.source",
+					foreignField: "_id",
+					as: "sourceDetails",
+				},
+			},
+			// 3. Match filters
+			{
+				$match: {
+					...(classFilter && { "meta.class": classFilter }),
+					...(subject && { "meta.subject": subject }),
+					...(bookPart && { "meta.bookPart": bookPart }),
+					...(chapter && { "meta.chapter": chapter }),
+					...(difficulty && { difficulty }),
+					...(exam_year && { "examDetails.exam_year": exam_year }),
+					...(exam_type && { "examDetails.exam_type": exam_type }),
+					...(board && { "sourceDetails.board": board }),
+				},
+			},
+			// 4. Optional: Select specific fields
+			{
+				$project: {
+					question: 1,
+					options: 1,
+					answer: 1,
+					meta: 1,
+					difficulty: 1,
+					"examDetails.exam_year": 1,
+					"examDetails.exam_type": 1,
+					"sourceDetails.board": 1,
+				},
+			},
+		]);
+
+		return questions;
+	} catch (error) {
+		console.error("Error fetching questions:", error);
+		throw new Error("Failed to fetch questions.");
+	}
+};
+
+export const getAllQuestion = async (req, res) => {
+	try {
+		const filters = req.body;
+		const questions = await filterQuestions(filters);
+		res.status(200).json(questions);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+};
+
 // Add Question Controller
 import express from "express";
 const router = express.Router();

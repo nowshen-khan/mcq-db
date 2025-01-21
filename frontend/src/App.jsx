@@ -7,6 +7,7 @@ import AddQuestionForm from "./components/AddQuestionForm";
 import AddExam from "./pages/Add/AddExam";
 import SourceList from "./pages/ShowList/SourceList";
 import "./App.css";
+import QuestionFilterPage from "./components/QuestionFilterPage";
 
 const Home = () => <h1>Welcome to MCQ DB</h1>;
 const Questions = () => (
@@ -28,7 +29,7 @@ const App = () => {
 	return (
 		<Router>
 			<Navbar />
-			<div>
+			<div className="container">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/questions" element={<Questions />} />
@@ -36,6 +37,7 @@ const App = () => {
 					<Route path="/about" element={<About />} />
 					<Route path="/add-source" element={<SourceList />} />
 					<Route path="/add-exam" element={<AddExam />} />
+					<Route path="/q" element={<QuestionFilterPage />} />
 				</Routes>
 			</div>
 		</Router>
